@@ -20,7 +20,7 @@ public class PrintAllSubsequences {
 		printSubsequence(i+1, a, b);
 		
 		// not take element
-		b.remove(i);
+		b.remove(new Integer(a[i]));
 		printSubsequence(i+1, a, b);
 	}
 
