@@ -260,13 +260,79 @@ public class SimpleLinkedList {
 	
 	
 	// REVERSE LL  (iterative method)
+	// naive way - traverse the LL, copy the values in arraylist. Now copy the elements of the arraylist to LL in
+	// reverse order. 		TIME - O(n), Space - O(n)
+	
+	// efficient solution - change the links rather than changing the data of the nodes.
+	// Time - O(n), Space - O(1)
 	public static Node reverseIterative(Node head) {
 		
-		return head;
+		Node prev, curr, next;
+		if(head == null)
+			return null;
+		if(head.next == null)
+			return head;
+		
+		curr = head;
+		prev = null;
+		
+		while(curr !=null) {
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+						
+		return prev;
 	}
 	
-	// REVERSE LL (Recursive method)
-	public static Node reverseRecursive(Node head) {
+	// REVERSE LL (Recursive methods - I, II)	
+	
+	public static Node reverseRecursiveMethod1(Node head) {
+		/*
+		 * Assume that from the 2nd node till the last node, the LL is reversed. 
+		 * restHead points to the last element of the LL which represents the "head" of the reversed LL
+		 * restTail points to the 2nd node of the LL which represents the "tail" of the reversed LL.
+		 * 
+		 * so to join the 1st node of the LL to the reversed LL, see line number 303
+		 * and finally we return the head of the reversed LL i.e. restHead.
+		 * */
+		if(head == null || head.next == null)
+			return head;
+		
+		Node restHead = reverseRecursiveMethod1(head.next);
+		Node restTail = head.next;
+		restTail.next = head;
+		head.next = null;
+		
+		return restHead;
+	}
+	
+	public static Node reverseRecursiveMethod2(Node curr, Node prev) {
+		/*
+		 * we do the reverse of Method I
+		 * Here we assume that the LL has been reversed upto (n-1)th node. We need to reverse the nth node.
+		 * For this, we need 2 references -> current (the nth node) and previous (the (n-1)th node)
+		 * The implementation is similar to the iterative reverse function.
+		 * */
+		
+		if(curr == null)
+			return prev;
+		Node next = curr.next;
+		curr.next = prev;
+		return reverseRecursiveMethod2(next, curr);
+	}
+	
+	
+	// REMOVE DUPLICATES FROM SORTED LL
+	public static Node removeDuplicates(Node head) {
+		Node curr = head;
+		while(curr != null && curr.next != null) {
+			if(curr.value == curr.next.value)
+				curr.next = curr.next.next;
+			else
+				curr = curr.next;
+		}
 		
 		return head;
 	}
@@ -283,7 +349,16 @@ public class SimpleLinkedList {
 		head = sortedInsert(head, 3);
 		System.out.println();
 		traverse(head);
-		printNth(head, 5);
+		//printNth(head, 5);
+		//head = reverseIterative(head);
+		head = reverseRecursiveMethod2(head, null);
+		System.out.println();
+		traverse(head);
+		
+		
+		
+		
+		
 	}
 
 }
