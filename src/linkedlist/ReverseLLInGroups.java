@@ -1,9 +1,5 @@
 package linkedlist;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
-
 public class ReverseLLInGroups {
 	/*
 	 * Time complexity - O(n), 		Space complexity - O(1)
@@ -58,7 +54,7 @@ public class ReverseLLInGroups {
 		}
 		System.out.println();
 	}
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		Node head = new Node(1);
 		Node t1 = new Node(2);
 		head.next = t1;
