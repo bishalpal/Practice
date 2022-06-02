@@ -6,6 +6,7 @@ class Node {
 	
 	Node(int a) {
 		this.value = a;
+		this.next = null;
 	}
 
 }
@@ -91,7 +92,7 @@ public class SimpleLinkedList {
 	
 	
 	// DELETE FIRST NODE			TIME - O(1)
-	// we don't need to worry about memory deallocation
+	// we don't need to worry about memory deallocation in java :)
 	public static Node deleteHead(Node head) {
 		if(head == null) {
 			System.out.println("No linkedlist present");
@@ -215,7 +216,7 @@ public class SimpleLinkedList {
 		}
 		
 		// both the references start from the first element of the linked list.
-		// slow moves 1 elment at a time, whle fast moves 2 elements at a time.
+		// slow moves 1 element at a time, while fast moves 2 elements at a time.
 		// in case of even element, fast points to null and slow points to the middle element
 		// in case of odd element, fast points to last element and slow points to middle element
 		
