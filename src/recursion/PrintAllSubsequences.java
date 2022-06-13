@@ -12,7 +12,7 @@ public class PrintAllSubsequences {
 	 in function arguments, i = index. I need to traverse the array upto a.length-1
 	 arraylist b is the list where we store the subsequences.
 	
-	/* Time complexity : O(2^n * n) ... for every element we have 2 choice -> take / not take
+	 	Time complexity : O(2^n * n) ... for every element we have 2 choice -> take / not take
 									... for every subsequence we create, we need to print it, 
 										so if we use a loop to do it then --- O(n) time
 									
