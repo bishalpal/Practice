@@ -8,8 +8,9 @@ public class NRaiseToPowerP {
 		if(p == 0) {
 			return 1;
 		}
-		return (int) (n * Math.pow(n, p-1));
+		return (n * power(n,p-1));
 	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
