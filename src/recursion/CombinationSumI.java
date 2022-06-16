@@ -34,7 +34,6 @@ public class CombinationSumI {
 		// base case		
 		if(i == a.length) {
 			if(target == 0) {
-				System.out.println(ds.toString());
 				result.add(new ArrayList<>(ds));				// this task takes linear time. DO NOT THINK IT AS CONSTANT TIME.
 			}
 			return;
@@ -45,7 +44,9 @@ public class CombinationSumI {
 			ds.add(a[i]);										// add the particular element to the ds
 			
 			findCombinations(i,target-a[i], a, result, ds);		// we don't increment i by 1 since we want to pick
-																// it multiple times.
+																// it again in the next iteration.
+																// we reduce the target by the value we have
+																// picked up
 			ds.remove(new Integer(a[i]));			// after returning from the recursive call, we need to remove 
 													// the added element from our data structure i.e. ds
 		}
