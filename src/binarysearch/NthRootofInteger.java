@@ -11,6 +11,15 @@ import java.util.Scanner;
  * To do this, 
  * Step 1 - Identify if the function is linearly increasing / decreasing
  * Step 2 - find the search space.
+ * 
+ * 
+ * Time complexity 
+ * If I have to find the nth root upto 1 decimal place, then my search space will contain
+ * 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6.....2.0, 2.1, 2.2,....26.9, 27.0  these numbers. i.e. I have m*10 elements.
+ * Now here in the question, I need to find the answer upto 5 decimal places.
+ * So, my search space has m*10^5 elements.
+ * Now, a binary search algo takes log2(no.of elements), so here, it will be log2(m*10^5).
+ * We also have function multiply() which has a loop running "n" times. So, the answer is [ n * log2(m * 10^5) ]
  */
 public class NthRootofInteger {
 
