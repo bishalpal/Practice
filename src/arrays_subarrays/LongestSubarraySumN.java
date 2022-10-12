@@ -7,9 +7,24 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class LongestSubarraySumN {
-
-	static int longestSubarray(int[] a, int k) {
+	static int naiveApproach(int[] a, int k) {
 		// naive approach = O(n^2)
+		int max = Integer.MIN_VALUE;
+		int sum = 0;
+		for(int i = 0; i<a.length; i++) {
+			sum = 0;
+			for(int j = i; j<a.length; j++) {
+				sum += a[j];
+				if(sum == k)
+					max = Math.max(max, j-i+1);
+			}
+		}
+		
+		return max;
+	}
+	
+	static int longestSubarray(int[] a, int k) {
+		
 		// efficient approach - use prefix sum and Hashmap O(n) - time, O(n) - space
 		/* even more efficient approach - sliding window using 2 pointers (this approach
 		   doesn't work with -ve numbers */
@@ -75,6 +90,7 @@ public class LongestSubarraySumN {
 		int result = longestSubarray(a, k);
 		System.out.println("The length of longest subarray having sum " + k + " is " + result);
 		System.out.println("Using optimised approach, the length of longest subarray having sum " + k + " is " + optimisedApproach(a,k));
+		System.out.println("Using naive approach, the length of longest subarray having sum " + k + " is " + naiveApproach(a,k));
 	}
 
 }
