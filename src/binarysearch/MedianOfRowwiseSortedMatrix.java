@@ -16,7 +16,7 @@ public class MedianOfRowwiseSortedMatrix {
 	 * 
 	 * To understand this better, refer to 17:17 in TUF
 	 */
-	public static int NumberOfElementsSmallerThanMid(int matrix[], int mid) { 
+	public static int NumberOfElementsSmallerThanMid(int matrix[], int mid) { 		// O(log(columns))
 		int l = 0;
 		int h = matrix.length - 1;
 		
@@ -63,8 +63,9 @@ public class MedianOfRowwiseSortedMatrix {
 			int countOfElements = 0;
 			
 			// Now, we search the #elements smaller than the mid.
-			for(int i = 0; i<r; i++) {
-				countOfElements += NumberOfElementsSmallerThanMid(matrix[i], mid);
+			for(int i = 0; i<r; i++) {								// T.C = rows * O( NumberOfElementsSmallerThanMid())
+																	// i.e. O(rows * log(columns)) ...binary search
+				countOfElements += NumberOfElementsSmallerThanMid(matrix[i], mid);	
 			}
 			/*
 			 * For debugging
