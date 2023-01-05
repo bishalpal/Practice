@@ -36,7 +36,7 @@ public class NthRootofInteger {
 		double high = m;
 		double diff = 1e-6;
 		
-		while((high - low) > diff) {		// normally, here we would have written while(low > high)
+		while((high - low) > diff) {		// normally, here we would have written while(high > low)
 			double mid = (high + low)/2.0;	// but here we are trimming the search space down to the 6th digit.
 			if(multiply(mid, n) < m)
 				low = mid;
